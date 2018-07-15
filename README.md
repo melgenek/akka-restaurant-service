@@ -29,9 +29,13 @@ docker-compose down
 ### Api 
 
 GET /restaurants/<id>
+
 Responses:
-- 200. Gets a restaurant by id
-- 404. The restaurant is not found
+	
+200. Gets a restaurant by id
+
+404. The restaurant is not found
+
 Sample response:
 ```
 {
@@ -44,9 +48,11 @@ Sample response:
 ```
 
 GET /restaurants
-- 200. Gets the list of all stored restaurants.
+
+200. Gets the list of all stored restaurants.
 
 POST /restaurants
+
 Example body:
 ```
 {
@@ -56,12 +62,16 @@ Example body:
 	"description": "cool restaurant"
 }
 ```
-- 201. Creates a restaurant. Returns the created restaurant.
-- 409. The same restaurant by name and address is found. Responds with existing restaurant data.
+
+201. Creates a restaurant. Returns the created restaurant.
+
+409. The same restaurant by name and address is found. Responds with existing restaurant data.
 
 PUT /restaurants/<id>
-- 204. Updates a restaurant. No response body.
+
+204. Updates a restaurant. No response body.
 
 DELETE /restaurants/<id>
-- 204. Deletes a restaurant. No response body.
+
+204. Deletes a restaurant. No response body.
 
