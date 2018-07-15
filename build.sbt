@@ -34,3 +34,22 @@ libraryDependencies ++= Seq(
 
 configs(IntegrationTest)
 Defaults.itSettings
+
+enablePlugins(sbtdocker.DockerPlugin, JavaAppPackaging)
+
+dockerfile in docker := {
+  val appDir: File = stage.value
+  val targetDir = "/app"
+
+  new Dockerfile {
+    from("anapsix/alpine-java:8_server-jre")
+    expose(8080)
+    copy(appDir, targetDir)
+    entryPoint(s"$targetDir/bin/${executableScriptName.value}")
+  }
+}
+
+imageNames in docker := Seq(
+  ImageName(s"service/restaurant:latest")
+)
+
